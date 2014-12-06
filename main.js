@@ -37,8 +37,8 @@ app.get('/open/:day', function(req, res) {
 
 
 
-app.listen(3000, function(){
-    console.log("Server listening on port 3000");
+app.listen(8081, function(){
+    console.log("Server listening on port 8081");
 });
 
 function render(res, appHtml, appData) {
