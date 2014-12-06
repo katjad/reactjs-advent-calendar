@@ -6,7 +6,7 @@
   "scripts": {
     "build": "browserify -e index.js -s ReactMiniRouter > dist/react-mini-router.js",
     "dist": "uglifyjs dist/react-mini-router.js > dist/react-mini-router.min.js",
-    "start": "node server.js"
+    "start": "node main.js"
   },
   "author": "Katja Durrani",
    "keywords": [
