@@ -23,16 +23,16 @@ var DoorShut = React.createClass({
     render: function(){
         var colour = this.props.coloursize['colour'];
         var size = this.props.coloursize['size'];
-        var width_outer = (225 - size).toString() + 'px';
+        var width_outer = (224 - size).toString() + 'px';
         var height_outer = (260 -size).toString() + 'px';
-        var width_shutter = ((225 - size)/2) + 'px';
+        var width_shutter = ((224 - size)/2) + 'px';
         var width_inner = ((200 - size)/2) + 'px';
         var height_inner = (250 - size) + 'px';
         var styles_outer = {
             width: width_outer,
             height: height_outer,
             background: colour,
-            margin: '50px 100px'
+            margin: '50px 108px'
         };
         var styles_shutter = {
             float: 'left',

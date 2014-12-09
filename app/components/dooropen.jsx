@@ -6,13 +6,6 @@ var DoorOpen = React.createClass({
     handleUserInput: function(){
         this.props.onUserInput()
     },
-    /*keyHandler: function(event){
-        if(event.keyCode === 13) {
-            console.log("keystroke");
-            this.handleUserInput();
-        }
-
-    },*/
     componentDidMount: function(){
       var dooropen = this.refs.dooropen.getDOMNode();
         dooropen.focus();
@@ -20,7 +13,7 @@ var DoorOpen = React.createClass({
     render: function(){
         var colour = this.props.coloursize['colour'];
         var size = this.props.coloursize['size'];
-        var width_outer = (500 - size).toString() + 'px';
+        var width_outer = (440 - size).toString() + 'px';
         var height_outer = (260 - size).toString() + 'px';
         var height_inner = (250 -size).toString() + 'px';
         var width_text = (225 -size).toString() + 'px';
@@ -48,23 +41,25 @@ var DoorOpen = React.createClass({
             height: height_text,
             border: '1px solid #333',
             float: 'left',
-            padding: '0 1.5em'
+            padding: '0 25px'
         };
-        return  <div tabIndex="0" ref="dooropen" style={styles_frame} /*onKeyDown={this.keyHandler}*/  >
-                <div style={styles_shutter}>
-                <div style={styles_inner} ></div>
-            </div>
-            <div className="text" style={styles_text} >
-                <DoorInside
-                    content={this.props.content}
-                    ident={this.props.ident}
-                    onUserInput={this.handleUserInput}
+        return  <div tabIndex="0" ref="dooropen" style={styles_frame}  >
+                <div className = "wrapper" style= {{"margin" : "0 auto"}}>
+                        <div style={styles_shutter}>
+                            <div style={styles_inner} ></div>
+                        </div>
+                        <div className="text" style={styles_text} >
+                            <DoorInside
+                                content={this.props.content}
+                                ident={this.props.ident}
+                                onUserInput={this.handleUserInput}
 
-                />
-            </div>
-            <div style={styles_shutter}>
-                <div style={styles_inner} ></div>
-            </div>
+                            />
+                        </div>
+                        <div style={styles_shutter}>
+                            <div style={styles_inner} ></div>
+                        </div>
+                </div>
         </div>
 
     }

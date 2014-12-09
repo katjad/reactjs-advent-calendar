@@ -17,13 +17,14 @@ var AdventDoor = React.createClass({
     render: function(){
         //console.log("key:" + this.props.ident);
         var show = this.state.show;
-        var id = this.props.ident;
+        var id = parseInt(this.props.ident) - 1;
         var coloursize = coloursizes[id];
         return show ? <DoorOpen
             ident={id}
             onUserInput={this.handleUserInput}
             coloursize ={coloursize}
             content={this.props.content}
+
              />
             : <DoorShut
             ident = {id}

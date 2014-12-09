@@ -10,7 +10,7 @@ var AdventCal = React.createClass({displayName: 'AdventCal',
       return ({contents : []})
     },
     componentDidMount: function(){
-        for(var i = 1; i < 5; i++){
+        for(var i = 1; i < 25; i++){
             this.getContents(i);
         }
     },
@@ -24,7 +24,7 @@ var AdventCal = React.createClass({displayName: 'AdventCal',
                 contents[index] = res.text;
                 count++;
 
-                if(count == 4){
+                if(count == 24){
                    if(self.isMounted()){
                         self.setState({contents: contents});
                    };
@@ -40,7 +40,8 @@ var AdventCal = React.createClass({displayName: 'AdventCal',
                 React.createElement(AdventDoor, {
                 content: content, 
                 key: index, 
-                ident: index})
+                ident: index}
+                )
             )
     });
 
