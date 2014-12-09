@@ -7,12 +7,20 @@ var DoorInside = React.createClass({
     clickHandler: function(){
         this.props.onUserInput();
     },
+    keyHandler: function(event){
+        if(event.keyCode === 13) {
+            console.log("keystroke");
+            this.clickHandler();
+        }
+    },
     submit: function(evt) {
         evt.preventDefault();
         var url = '/open/' + this.props.ident;
         navigate(url);
     },
+    componentDidMount: function(){
 
+    },
     render: function(){
 
         /*var door = {
@@ -24,15 +32,14 @@ var DoorInside = React.createClass({
             'has two halves: Kraft and werk. Kraft for some reason means "power".'
         }*/
         var daycontent = JSON.parse(this.props.content)
-        return <span><h2 style={{display: 'inline'}}>Word of the day</h2><br />
-            <h2  style={{display:'inline'}}>Wort des Tages</h2>
+        return <span>
             <h3 style={{color: 'red'}}>{daycontent.title}</h3>
             <p dangerouslySetInnerHTML={{__html: daycontent.text}}></p>
             <form>
             <button onClick={this.submit} >Read more</button>
             </form>
             <p></p>
-            <button onClick={this.clickHandler}>Shut</button></span>;
+            <button onClick={this.clickHandler} >Shut</button></span>;
     }
 });
 

@@ -7,12 +7,20 @@ var DoorInside = React.createClass({displayName: 'DoorInside',
     clickHandler: function(){
         this.props.onUserInput();
     },
+    keyHandler: function(event){
+        if(event.keyCode === 13) {
+            console.log("keystroke");
+            this.clickHandler();
+        }
+    },
     submit: function(evt) {
         evt.preventDefault();
         var url = '/open/' + this.props.ident;
         navigate(url);
     },
+    componentDidMount: function(){
 
+    },
     render: function(){
 
         /*var door = {
@@ -24,8 +32,7 @@ var DoorInside = React.createClass({displayName: 'DoorInside',
             'has two halves: Kraft and werk. Kraft for some reason means "power".'
         }*/
         var daycontent = JSON.parse(this.props.content)
-        return React.createElement("span", null, React.createElement("h2", {style: {display: 'inline'}}, "Word of the day"), React.createElement("br", null), 
-            React.createElement("h2", {style: {display:'inline'}}, "Wort des Tages"), 
+        return React.createElement("span", null, 
             React.createElement("h3", {style: {color: 'red'}}, daycontent.title), 
             React.createElement("p", {dangerouslySetInnerHTML: {__html: daycontent.text}}), 
             React.createElement("form", null, 

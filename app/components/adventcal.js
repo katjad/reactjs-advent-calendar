@@ -2,9 +2,8 @@ var React = require('react');
 var AdventDoor = require('./adventdoor');
 var request = require('superagent');
 
-contents = [];
-var count = 0
-
+var contents = [];
+var count = 0;
 
 var AdventCal = React.createClass({displayName: 'AdventCal',
     getInitialState: function(){
@@ -37,7 +36,12 @@ var AdventCal = React.createClass({displayName: 'AdventCal',
           //  {"title":"title1", "text": "text1"}, {"title":"title1", "text": "text1"}]
         //this.props.filecontents = contents;
         var doors = this.state.contents.map(function(content, index){
-            return  React.createElement(AdventDoor, {content: content, key: index, ident: index})
+            return React.createElement("div", {style: {"float":"left"}}, 
+                React.createElement(AdventDoor, {
+                content: content, 
+                key: index, 
+                ident: index})
+            )
     });
 
         return React.createElement("div", null, doors);
