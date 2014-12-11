@@ -32,9 +32,6 @@ var AdventCal = React.createClass({displayName: 'AdventCal',
         });
     },
     render: function(){
-        //this.props.filecontents = [{"title":"title1", "text": "text1"}, {"title":"title1", "text": "text1"},
-          //  {"title":"title1", "text": "text1"}, {"title":"title1", "text": "text1"}]
-        //this.props.filecontents = contents;
         var doors = this.state.contents.map(function(content, index){
             return React.createElement("div", {style: {"float":"left"}}, 
                 React.createElement(AdventDoor, {

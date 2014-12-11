@@ -21,6 +21,10 @@
    </script>
 
     <style>
+
+        :focus {outline: solid 3px #bbb;
+        };
+
         button.example{
 
             margin-top: 200px;
@@ -28,8 +32,8 @@
         }
 
         .item {
-            width: 100px;
-            height: 180px;
+            /*width: 100px;
+            height: 180px;*/
             margin: 0 auto;
             border-radius: 0%;
             position: relative;
@@ -39,8 +43,8 @@
 
         }
         .info-wrap {
-            width: 100px;
-            height: 180px;
+           /* width: 100px;
+            height: 250px; */
             border-radius: 0%;
             -webkit-perspective: 800px;
             -moz-perspective: 800px;
@@ -142,7 +146,7 @@
             transform: rotate3d(0, 1, 0, 150deg);
         } */
 
-        .item.left.active .info {
+        .item.left.shutter-leave .info {
             -webkit-transform: rotate3d(0, 0, 0, -150deg);
             -moz-transform: rotate3d(0, 1, 0, -150deg);
             -o-transform: rotate3d(0, 1, 0, -150deg);
@@ -150,7 +154,7 @@
             transform: rotate3d(0, 1, 0, -150deg);
         }
 
-        .item.right.active .info {
+        .item.right.shutter-leave .info {
             -webkit-transform: rotate3d(0, 0, 0, 150deg);
             -moz-transform: rotate3d(0, 1, 0, 150deg);
             -o-transform: rotate3d(0, 1, 0, 150deg);

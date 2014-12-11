@@ -1,7 +1,10 @@
-var React = require('react');
-var DoorShut = require('./doorshut');
+var React = require('react/addons');
+var DoorShutAni = require('./doorshutani');
 var DoorOpen = require('./dooropen');
 var coloursizes = require('./../../lib/coloursize');
+
+
+ var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 
 var AdventDoor = React.createClass({displayName: 'AdventDoor',
@@ -26,11 +29,14 @@ var AdventDoor = React.createClass({displayName: 'AdventDoor',
             content: this.props.content}
 
              )
-            : React.createElement(DoorShut, {
+
+            : 
+            React.createElement(ReactCSSTransitionGroup, {transitionName: "shutter"}, 
+            React.createElement(DoorShutAni, {
             ident: id, 
             onUserInput: this.handleUserInput, 
             coloursize: coloursize}
-        )
+        ))
     }
 });
 
