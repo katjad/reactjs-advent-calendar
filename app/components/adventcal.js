@@ -2,6 +2,8 @@ var React = require('react');
 var AdventDoor = require('./adventdoor');
 var request = require('superagent');
 
+var coloursizes = require('./../../lib/coloursize');
+
 var contents = [];
 var count = 0;
 
@@ -31,9 +33,11 @@ var AdventCal = React.createClass({displayName: 'AdventCal',
                 }
         });
     },
-    render: function(){
+    render: function(){     
         var doors = this.state.contents.map(function(content, index){
-            return React.createElement("div", {style: {"float":"left"}}, 
+            var size = coloursizes[index - 1]['size'];
+            var width_wrapper = (436 - size) + 'px';
+            return React.createElement("div", {style: {"float":"left", marginRight: "15px", width: width_wrapper}}, 
                 React.createElement(AdventDoor, {
                 content: content, 
                 key: index, 

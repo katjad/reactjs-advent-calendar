@@ -1,13 +1,22 @@
 var React = require('react/addons');
 
-var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+
 
 
 var DoorShutAni = React.createClass({
 
     clickHandler: function(){
-        this.props.onUserInput();
 
+        var node = this.getDOMNode();
+        var items = node.getElementsByClassName('item');
+        this.addClassName(items[0], 'active');
+        this.addClassName(items[1], 'active');
+        this.timer = window.setTimeout(this.props.onUserInput, 500);   
+
+    },
+
+    addClassName: function(element, addclass){
+         element.className = element.className + ' ' + addclass;  
     },
     keyHandler: function(event){
 
@@ -18,9 +27,12 @@ var DoorShutAni = React.createClass({
     },
     componentDidMount: function(){
       if(this.isMounted) {
-          console.log(this.refs.shut.getDOMNode());
+          //console.log(this.refs.shut.getDOMNode());
           this.refs.shut.getDOMNode().focus();
       }
+    },
+    componentWillUnmount: function(){
+        window.clearTimeout(this.timer);
     },
     render: function(){
         var colour = this.props.coloursize['colour'];
@@ -30,11 +42,11 @@ var DoorShutAni = React.createClass({
         var width_shutter = ((224 - size)/2) + 'px';
         var width_inner = ((200 - size)/2) + 'px';
         var height_inner = (250 - size) + 'px';
+
         var styles_outer = {
             width: width_outer,
             height: height_outer,
-            background: colour,
-            margin: '50px 108px'
+            margin: '50px 100px'
         };
         var styles_shutter = {
             height: height_outer,
@@ -54,33 +66,34 @@ var DoorShutAni = React.createClass({
             onClick={this.clickHandler}
             onKeyDown={this.keyHandler}
         >
-      
+       
 
-        <div className = "item left" style={styles_shutter} >
-          <div className="info-wrap" >
+        <div className = "item left"  >
+          <div className="info-wrap" style={{width: width_shutter}}>
             <div className="info left">
 
-                <div className="info-front">
+                <div className="info-front"  style={styles_shutter}>
                     <div style={styles_inner}></div>
                 </div>
-                <div className="info-back" style={{backgroundColor: "#c2ddb6"}}>
-                    <h3>OPEN!</h3>
+                <div className="info-back"  style={styles_shutter}>
+                     <div style={styles_inner}></div>
                 </div>
+                          
 
             </div>
           </div>      
         </div>  
        
 
-        <div className= "item right" style={styles_shutter} >
-          <div className ="info-wrap" >
+        <div className= "item right" >
+          <div className ="info-wrap" style={{width: width_shutter}}>
             <div className ="info right">
 
-            <div className="info-front" >
+            <div className="info-front" style={styles_shutter} >
                 <div style={styles_inner}></div>
             </div>
-            <div className ="info-back" style={{backgroundColor: "#c2ddb6"}}>
-                <h3>OPEN!</h3>
+            <div className ="info-back" style={styles_shutter}>
+                 <div style={styles_inner}></div>
             </div>
 
             </div>

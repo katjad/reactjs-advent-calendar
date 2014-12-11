@@ -13,10 +13,10 @@ var DoorOpen = React.createClass({
     render: function(){
         var colour = this.props.coloursize['colour'];
         var size = this.props.coloursize['size'];
-        var width_outer = (440 - size).toString() + 'px';
+        var width_outer = (436 - size).toString() + 'px';
         var height_outer = (260 - size).toString() + 'px';
         var height_inner = (250 -size).toString() + 'px';
-        var width_text = (225 -size).toString() + 'px';
+        var width_text = (224 - size).toString() + 'px';
         var height_text = (258 - size).toString() + 'px';
 
         var styles_frame = {

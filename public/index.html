@@ -22,7 +22,7 @@
 
     <style>
 
-        :focus {outline: solid 3px #bbb;
+        :focus {outline: solid 2px #ddd;
         };
 
         button.example{
@@ -31,20 +31,22 @@
             clear: both;
         }
 
-        .item {
+        .item, item.left, item.right {
             /*width: 100px;
             height: 180px;*/
             margin: 0 auto;
             border-radius: 0%;
-            position: relative;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            position: relative; 
+            /*box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);*/
             cursor: default;
             float: left;
 
         }
+
         .info-wrap {
            /* width: 100px;
             height: 250px; */
+            /*width: 100px;*/
             border-radius: 0%;
             -webkit-perspective: 800px;
             -moz-perspective: 800px;
@@ -56,13 +58,13 @@
             -o-transition: all 0.4s ease-in-out;
             -ms-transition: all 0.4s ease-in-out;
             transition: all 0.4s ease-in-out;
-            top: 20px;
-            left: 20px;
-            background: #f9f9f9;
+            /*top: 20px;
+            left: 20px;*/
+            /*background: #f9f9f9;*/
         }
         .info {
-            position: absolute;
-            width: 100px;
+            /*position: absolute; */
+            /*width: 60px; */
             height: 180px;
             border-radius: 0%;
             -webkit-transition: all 0.4s ease-in-out;
@@ -111,7 +113,6 @@
             -o-transform: rotate3d(0, 1, 0, -180deg);
             -ms-transform: rotate3d(0, 1, 0, -180deg);
             transform: rotate3d(0, 1, 0, -180deg);
-            background: #000;
         }
 
         .info.right .info-back {
@@ -120,7 +121,7 @@
             -o-transform: rotate3d(0, 1, 0, 180deg);
             -ms-transform: rotate3d(0, 1, 0, 180deg);
             transform: rotate3d(0, 1, 0, 180deg);
-            background: #000;
+            /*background: #000;*/
         }
 
         .info h3 {
@@ -146,7 +147,7 @@
             transform: rotate3d(0, 1, 0, 150deg);
         } */
 
-        .item.left.shutter-leave .info {
+        .item.left.active .info {
             -webkit-transform: rotate3d(0, 0, 0, -150deg);
             -moz-transform: rotate3d(0, 1, 0, -150deg);
             -o-transform: rotate3d(0, 1, 0, -150deg);
@@ -154,7 +155,7 @@
             transform: rotate3d(0, 1, 0, -150deg);
         }
 
-        .item.right.shutter-leave .info {
+        .item.right.active .info {
             -webkit-transform: rotate3d(0, 0, 0, 150deg);
             -moz-transform: rotate3d(0, 1, 0, 150deg);
             -o-transform: rotate3d(0, 1, 0, 150deg);
@@ -169,34 +170,10 @@
 
 
 <div id="app"></div>
-<div style="clear: both; margin-left:100px">
-<h2>Window with 3dtransform - not React</h2>
-<div class = "item left">
-    <div class="info-wrap">
-        <div class="info left">
-            <div class="info-front" style=" background-color:#cccccc;"></div>
-            <div class="info-back" style=" background-color: #c2ddb6;">
-                <h3>OPEN!</h3>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 
-            </div>
-        </div>
-    </div>
-</div>
 
-<div class = "item right">
-    <div class="info-wrap">
-        <div class="info right">
-            <div class="info-front" style=" background-color:#cccccc;"></div>
-            <div class="info-back" style=" background-color: #c2ddb6;">
-                <h3>OPEN!</h3>
-
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-<br />
-<button class="example" onclick="addclass()" >Click Me</button>
 
 <script type="text/javascript" id="appData"></script>
 <script type="text/javascript" src="/js/app.js"></script>
