@@ -13,15 +13,12 @@ var App = React.createClass({
         '/':'viewAllDoors',
         '/open/:number': 'viewDoor'
     },
-
     mixins: [RouterMixin],
-
     render: function() {
         return <div>{this.renderCurrentRoute()}</div>
     },
-
     viewAllDoors: function(){
-         return <AdventCal  />
+         return <AdventCal />
     },
 
     viewDoor: function(number) {

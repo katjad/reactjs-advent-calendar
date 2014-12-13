@@ -9,37 +9,34 @@ var DoorInside = React.createClass({displayName: 'DoorInside',
     },
     keyHandler: function(event){
         if(event.keyCode === 13) {
-            console.log("keystroke");
             this.clickHandler();
         }
     },
     submit: function(evt) {
         evt.preventDefault();
-        var url = '/open/' + this.props.ident;
+        var url = '/open/' + (this.props.ident + 1);
         navigate(url);
     },
-    componentDidMount: function(){
+    getFirstWords: function(text){
+        var nrw = 15;                // the number of words we want to extract
+        var rgxwords = new RegExp('([^ ]*[ ]{0,1}){1,'+nrw+'}', 'g');      // regexp for specified number of space
+        text = text.replace(/\<[^\>]*\>/gi, '');      // remove HTML tags
+        text = text.replace(/\s\s+/g, ' ');           // replace multiple whitespaces whit single space
+        var txt = text.match(rgxwords)[0];            // get the substring with "nrw" number of words
 
+        return txt;
     },
     render: function(){
-
-        /*var door = {
-            title: 'Kraftwerk',
-            text: 'I was just listening to my guilty pleasure – the Absolute Eighties '+
-            'digital-radio station after eating a plate of pasta – when what should '+
-            'come on but "The Model" by German electro-synth outfit Kraftwerk. '+
-            'Their name, which is usually totally mangled by English-speaking types, '+
-            'has two halves: Kraft and werk. Kraft for some reason means "power".'
-        }*/
-        var daycontent = JSON.parse(this.props.content)
+        var daycontent = JSON.parse(this.props.content);
+        var shortened = this.getFirstWords(daycontent.text) + '&hellip;';
         return React.createElement("span", null, 
-            React.createElement("h3", {style: {color: 'red'}}, daycontent.title), 
-            React.createElement("p", {dangerouslySetInnerHTML: {__html: daycontent.text}}), 
-            React.createElement("form", null, 
+            React.createElement("h3", {dangerouslySetInnerHTML: {__html: daycontent.title}}), 
+            React.createElement("p", {dangerouslySetInnerHTML: {__html: shortened}}), 
+            React.createElement("form", {style: {float: "left", marginRight: "30px"}}, 
             React.createElement("button", {onClick: this.submit}, "Read more")
             ), 
-            React.createElement("p", null), 
-            React.createElement("button", {onClick: this.clickHandler}, "Shut"));
+            
+            React.createElement("button", {style: {float: "left"}, onClick: this.clickHandler}, "Shut"));
     }
 });
 

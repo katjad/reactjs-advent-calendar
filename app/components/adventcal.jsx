@@ -13,8 +13,18 @@ var AdventCal = React.createClass({
     },
     componentDidMount: function(){
         for(var i = 1; i < 25; i++){
+            if(i == 24 ){
+              this.timer = window.setTimeout(this.focusOnTop, 500);
+            }
             this.getContents(i);
-        }
+        }  
+    },
+    componentWillUnmount: function(){
+        window.clearTimeout(this.timer);
+    },
+    focusOnTop: function(){
+        //this.refs.top.getDOMNode().focus();
+        document.getElementById('top').focus();
     },
     getContents: function(index)     {
         var self = this;
@@ -32,8 +42,8 @@ var AdventCal = React.createClass({
                    };
                 }
         });
-    },
-    render: function(){     
+    }, 
+    render: function(){               
         var doors = this.state.contents.map(function(content, index){
             var size = coloursizes[index - 1]['size'];
             var width_wrapper = (436 - size) + 'px';
@@ -46,7 +56,13 @@ var AdventCal = React.createClass({
             </div>
     });
 
-        return <div>{doors}</div>;
+        return <div>
+      
+        {doors}
+
+
+   
+        </div>;
     }
 });
 

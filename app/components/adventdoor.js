@@ -12,14 +12,10 @@ var AdventDoor = React.createClass({displayName: 'AdventDoor',
             show: false
         }
     },
-
     handleUserInput: function(){
-
-       
         var show = !this.state.show;
         this.setState({show: show});
     },
-
     render: function(){
         //console.log("key:" + this.props.ident);
         var show = this.state.show;
@@ -28,16 +24,12 @@ var AdventDoor = React.createClass({displayName: 'AdventDoor',
         var size = coloursize['size'];
         
         return show ? React.createElement(DoorOpen, {
-
             ident: id, 
             onUserInput: this.handleUserInput, 
             coloursize: coloursize, 
             content: this.props.content}
-
              )
-
-            : 
-           
+            :    
             React.createElement(DoorShutAni, {
             ident: id, 
             onUserInput: this.handleUserInput, 

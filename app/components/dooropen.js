@@ -2,6 +2,19 @@ var React = require('react');
 var DoorInside = require('./doorinside');
 
 
+// set the measures for the windows here - take care they correspond to values in doorshutani.jsx
+var maxwidth_window = 224; //px
+var maxheight_window = 270; 
+var maxheight_shutterinner = maxheight_window - 20; 
+
+var width_openshutter = 80;
+var width_openshutterinner = width_openshutter - 20;
+var margin_window = '50px 0'; // top and bottom margin same as in doorshutani.jsx
+var margin_shut_leftright = 100; // taken from doorshutani.jsx
+
+var maxwidth_outer = maxwidth_window + (2*width_openshutter) + (margin_shut_leftright/2) + 2;      //436
+
+
 var DoorOpen = React.createClass({displayName: 'DoorOpen',
     handleUserInput: function(){
         this.props.onUserInput()
@@ -13,28 +26,28 @@ var DoorOpen = React.createClass({displayName: 'DoorOpen',
     render: function(){
         var colour = this.props.coloursize['colour'];
         var size = this.props.coloursize['size'];
-        var width_outer = (436 - size).toString() + 'px';
-        var height_outer = (260 - size).toString() + 'px';
-        var height_inner = (250 -size).toString() + 'px';
-        var width_text = (224 - size).toString() + 'px';
-        var height_text = (258 - size).toString() + 'px';
+        var width_outer = (maxwidth_outer - size).toString() + 'px';
+        var height_outer = (maxheight_window - size).toString() + 'px';
+        var height_inner = (maxheight_shutterinner -size).toString() + 'px';
+        var width_text = (maxwidth_window - size).toString() + 'px';
+        var height_text = (maxheight_window - 2 - size).toString() + 'px';
 
         var styles_frame = {
             width: width_outer,
             height: height_outer,
-            margin: '50px 0'
+            margin: margin_window
         };
         var styles_shutter = {
-            width: '80px',
+            width: width_openshutter,
             height: height_outer,
             background: colour,
             float: 'left'
         };
         var styles_inner = {
             border: '1px #fff solid',
-            width: '70px',
+            width: width_openshutterinner,
             height: height_inner,
-            margin: '5px'
+            margin: '10px'
         };
         var styles_text = {
             width: width_text,

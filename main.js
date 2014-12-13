@@ -9,6 +9,7 @@ var app = express()
 
 app.use(bodyParser.json());
 
+
 app.get('/', function(req, res){
     var appHtml = React.renderToString(App({ path: '/'}));
 
@@ -16,6 +17,7 @@ app.get('/', function(req, res){
 })
 
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.get('/open/:day', function(req, res) {
 
