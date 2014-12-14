@@ -21,16 +21,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/open/:day', function(req, res) {
 
-    // We might not even need a react component for this?
-   /* fs.readFile(('public/days/' + req.params.day + '.json'), 'utf8', function (err, data) {
-        if (err) throw err;
-        obj = JSON.parse(data);
-        res.send(obj)
-    });*/
-
-
-
-
     var appHtml = React.renderToString(App({ path: '/open/:day'}));
 
     render(res, appHtml, {history: req.query.mode !== 'hash' });
