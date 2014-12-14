@@ -2,6 +2,7 @@ reactjs-advent-calendar
 =======================
 
 Advent calendar running on Node/Express, with ReactJS for UI 
+
 Using React Mini Router by Larry Myers : [https://github.com/larrymyers/react-mini-router](https://github.com/larrymyers/react-mini-router)
 
 To run the project locally: 
@@ -20,6 +21,6 @@ grunt serve
 Visit localhost:8081 to see the calendar
 
 The text for the doors is in the public/days directory as json files 
-You can optionally add a jpg picture that will display at the top of the post, by adding an image in the 
+You can optionally add a jpg picture that will display at the top of a post, by adding an image in the 
 public/pics directory with the name [number].jpg 
 
