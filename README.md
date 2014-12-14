@@ -3,8 +3,10 @@ reactjs-advent-calendar
 
 Advent calendar running on Node/Express, with ReactJS for UI 
 
-Using React Mini Router by Larry Myers : [https://github.com/larrymyers/react-mini-router](https://github.com/larrymyers/react-mini-router)
+Using React Mini Router by Larry Myers : [https://github.com/larrymyers/react-mini-router](https://github.com/larrymyers/react-mini-router)<br />
 Also, some elements taken from Mark Withers' Dog kennel: [https://github.com/markwithers/dog-feed](https://github.com/markwithers/dog-feed) 
+
+Example here: [http://advent.kdurrani.co.uk/](http://advent.kdurrani.co.uk/)<br />
 
 To run the project locally: 
 
