@@ -19,7 +19,8 @@ var AdventSingleDoor = React.createClass({
     componentDidMount: function() {
         this.getContent();
         var url = '/pics/' + this.props.ident + '.jpg'; 
-        this.urlExists(url);      
+        this.urlExists(url);    
+        this.refs.topbutton.getDOMNode().focus();  
     },
     getContent: function(){
         self = this;
@@ -52,7 +53,7 @@ var AdventSingleDoor = React.createClass({
               <div className="singledoor-inner">
 
                <form>
-                   <button onClick={this.submit} >Back to Calendar</button>
+                   <button ref="topbutton" onClick={this.submit} >Back to Calendar</button>
                </form>
 
               <h1 dangerouslySetInnerHTML={{__html: daycontent.title}}></h1>
