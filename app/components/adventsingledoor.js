@@ -19,7 +19,8 @@ var AdventSingleDoor = React.createClass({displayName: 'AdventSingleDoor',
     componentDidMount: function() {
         this.getContent();
         var url = '/pics/' + this.props.ident + '.jpg'; 
-        this.urlExists(url);      
+        this.urlExists(url);    
+        this.refs.topbutton.getDOMNode().focus();  
     },
     getContent: function(){
         self = this;
@@ -52,7 +53,7 @@ var AdventSingleDoor = React.createClass({displayName: 'AdventSingleDoor',
               React.createElement("div", {className: "singledoor-inner"}, 
 
                React.createElement("form", null, 
-                   React.createElement("button", {onClick: this.submit}, "Back to Calendar")
+                   React.createElement("button", {ref: "topbutton", onClick: this.submit}, "Back to Calendar")
                ), 
 
               React.createElement("h1", {dangerouslySetInnerHTML: {__html: daycontent.title}}), 
