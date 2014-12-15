@@ -30,13 +30,16 @@ var DoorInside = React.createClass({
         var daycontent = JSON.parse(this.props.content);
         var shortened = this.getFirstWords(daycontent.text) + '&hellip;';
         return <span>
+        <div style={{margin: '12px'}}>
             <h3 dangerouslySetInnerHTML={{__html: daycontent.title}} ></h3>
             <p dangerouslySetInnerHTML={{__html: shortened}}></p>
-            <form style={{float: "left", marginRight: "30px"}}>
+            <form style={{float: "left", marginRight: "15px"}}>
             <button onClick={this.submit} >Read more</button>
             </form>
             
-            <button style={{float: "left"}} onClick={this.clickHandler} >Shut</button></span>;
+            <button style={{float: "left"}} onClick={this.clickHandler} >Shut</button>
+        </div>
+        </span>;
     }
 });
 

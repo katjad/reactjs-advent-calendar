@@ -30,13 +30,16 @@ var DoorInside = React.createClass({displayName: 'DoorInside',
         var daycontent = JSON.parse(this.props.content);
         var shortened = this.getFirstWords(daycontent.text) + '&hellip;';
         return React.createElement("span", null, 
+        React.createElement("div", {style: {margin: '12px'}}, 
             React.createElement("h3", {dangerouslySetInnerHTML: {__html: daycontent.title}}), 
             React.createElement("p", {dangerouslySetInnerHTML: {__html: shortened}}), 
-            React.createElement("form", {style: {float: "left", marginRight: "30px"}}, 
+            React.createElement("form", {style: {float: "left", marginRight: "15px"}}, 
             React.createElement("button", {onClick: this.submit}, "Read more")
             ), 
             
-            React.createElement("button", {style: {float: "left"}, onClick: this.clickHandler}, "Shut"));
+            React.createElement("button", {style: {float: "left"}, onClick: this.clickHandler}, "Shut")
+        )
+        );
     }
 });
 
