@@ -3,6 +3,7 @@ var AdventDoor = require('./adventdoor');
 var request = require('superagent');
 
 var coloursizes = require('./../../lib/coloursize');
+var winconfig = require('./../../lib/winconfig');
 
 var contents = [];
 var count = 0;
@@ -46,8 +47,9 @@ var AdventCal = React.createClass({
     render: function(){               
         var doors = this.state.contents.map(function(content, index){
             var size = coloursizes[index - 1]['size'];
-            var width_wrapper = (436 - size) + 'px';
-            return <div style={{"float":"left", marginRight: "15px", width: width_wrapper}} >
+            var width_wrapper = ((winconfig['width_win'] - size)*1.75) + 'px';   
+            var height_wrapper = (winconfig['height_win'] - size + 10) + 'px'; 
+            return <div style={{"float":"left", width: width_wrapper, height: height_wrapper, margin: "15px"}} >
                 <AdventDoor
                 content={content}
                 key={index}
@@ -56,7 +58,7 @@ var AdventCal = React.createClass({
             </div>
     });
 
-        return <div>
+        return <div style={{marginLeft: '15px'}}>
       
         {doors}
 

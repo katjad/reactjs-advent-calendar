@@ -1,18 +1,6 @@
 var React = require('react');
 var DoorInside = require('./doorinside');
-
-
-// set the measures for the windows here - take care they correspond to values in doorshutani.jsx
-var maxwidth_window = 224; //px
-var maxheight_window = 270; 
-var maxheight_shutterinner = maxheight_window - 20; 
-
-var width_openshutter = 80;
-var width_openshutterinner = width_openshutter - 20;
-var margin_window = '50px 0'; // top and bottom margin same as in doorshutani.jsx
-var margin_shut_leftright = 100; // taken from doorshutani.jsx
-
-var maxwidth_outer = maxwidth_window + (2*width_openshutter) + (margin_shut_leftright/2) + 2;      //436
+var winconfig = require('./../../lib/winconfig');
 
 
 var DoorOpen = React.createClass({
@@ -23,45 +11,55 @@ var DoorOpen = React.createClass({
       var dooropen = this.refs.dooropen.getDOMNode();
         dooropen.focus();
     },
+    pixelize: function(size){
+        return size + 'px';
+    },
     render: function(){
+
         var colour = this.props.coloursize['colour'];
         var size = this.props.coloursize['size'];
-        var width_outer = (maxwidth_outer - size).toString() + 'px';
-        var height_outer = (maxheight_window - size).toString() + 'px';
-        var height_inner = (maxheight_shutterinner -size).toString() + 'px';
-        var width_text = (maxwidth_window - size).toString() + 'px';
-        var height_text = (maxheight_window - 2 - size).toString() + 'px';
+
+        // duplicate of doorshutani, put in config file? 
+        var width_win = winconfig['width_win'] - size;
+        var height_win = winconfig['height_win'] - size, height_winpx = this.pixelize(height_win);
+        var margin_innerframe = winconfig['margin_innerframe'], margin_innerframepx = this.pixelize(margin_innerframe);
+        var border = winconfig['border'], borderpx = this.pixelize(border) + ' solid rgba(255,255, 255, 0.5)';
+
+        var width_win_open = (1.75*width_win +2), width_win_openpx = this.pixelize(width_win_open);
+        var width_shutter_open = (width_win /2)*0.75, width_shutter_openpx = this.pixelize(width_shutter_open);
+        var width_shutter_open_innerpx = this.pixelize(width_shutter_open - 2*(margin_innerframe + border));
+        var height_shutter_innerpx = this.pixelize(height_win - 2*(margin_innerframe + border));        
+        var width_win_inner = width_win - 2, width_win_innerpx = this.pixelize(width_win_inner); 
+        var height_win_inner = height_win - 2, height_win_innerpx = this.pixelize(height_win_inner); 
 
         var styles_frame = {
-            width: width_outer,
-            height: height_outer,
-            margin: margin_window
-        };
-        var styles_shutter = {
-            width: width_openshutter,
-            height: height_outer,
+            width: width_win_openpx,
+            height: height_winpx
+        };  
+        var styles_shutter_open = {
+            width: width_shutter_openpx,
+            height: height_winpx,
             background: colour,
             float: 'left'
         };
-        var styles_inner = {
-            border: '1px #fff solid',
-            width: width_openshutterinner,
-            height: height_inner,
-            margin: '10px'
+        var styles_shutter_open_inner = {
+            border: borderpx,
+            width: width_shutter_open_innerpx,
+            height: height_shutter_innerpx,
+            margin: margin_innerframepx
         };
-        var styles_text = {
-            width: width_text,
-            height: height_text,
-            border: '1px solid #333',
-            float: 'left',
-            padding: '0 25px'
+        var styles_win_inner = {
+            width: width_win_innerpx,
+            height: height_win_innerpx,
+            border: '1px solid #ddd',
+            float: 'left'
         };
-        return  <div tabIndex="0" ref="dooropen" style={styles_frame}  >
+        return  <div tabIndex="0" ref="dooropen" style={styles_frame}>
                 <div className = "wrapper" style= {{"margin" : "0 auto"}}>
-                        <div style={styles_shutter}>
-                            <div style={styles_inner} ></div>
+                        <div style={styles_shutter_open}>
+                            <div style={styles_shutter_open_inner} ></div>
                         </div>
-                        <div className="text" style={styles_text} >
+                        <div className="text" style={styles_win_inner} >
                             <DoorInside
                                 content={this.props.content}
                                 ident={this.props.ident}
@@ -69,8 +67,8 @@ var DoorOpen = React.createClass({
 
                             />
                         </div>
-                        <div style={styles_shutter}>
-                            <div style={styles_inner} ></div>
+                        <div style={styles_shutter_open}>
+                            <div style={styles_shutter_open_inner} ></div>
                         </div>
                 </div>
         </div>
