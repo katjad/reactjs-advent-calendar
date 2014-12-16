@@ -6,13 +6,12 @@ var coloursizes = require('./../../lib/coloursize');
 var winconfig = require('./../../lib/winconfig');
 
 var contents = [];
-var count = 0;
 
 var AdventCal = React.createClass({displayName: 'AdventCal',
     getInitialState: function(){
       return ({contents : []})
     },
-    componentDidMount: function(){
+    componentDidMount: function(){     
         for(var i = 1; i < 25; i++){
             if(i == 24 ){
               this.timer = window.setTimeout(this.focusOnTop, 500);
@@ -31,17 +30,12 @@ var AdventCal = React.createClass({displayName: 'AdventCal',
         var self = this;
         request.get('/days/' + index + '.json')
             .end(function (error, res) {
+                console.log("end");
                 if (error) {
                     console.error;
                 }
                 contents[index] = res.text;
-                count++;
-
-                if(count == 24){
-                   if(self.isMounted()){
-                        self.setState({contents: contents});
-                   };
-                }
+                    self.setState({contents: contents});
         });
     }, 
     render: function(){               
