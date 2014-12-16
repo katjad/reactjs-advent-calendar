@@ -26,6 +26,7 @@
         }
         h2, h3{
             color: #e44;
+            word-wrap: break-word;
 
         }
         h2.title, h2.about{
@@ -68,6 +69,10 @@
         }
         .singledoor-inner{
             margin: 30px;
+        }
+        .singledoor-inner p{
+            font-size: 1em;
+            line-height: 1.5em;
         }
         :focus {outline: dotted 2px #ccc;
         }
