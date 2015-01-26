@@ -4,7 +4,7 @@ var React = require('react'),
     AdventSingleDoor = require('./adventsingledoor'),
     request = require('superagent');
 
-var doorcontent = JSON.stringify({"title":"A door!", "text":"This is the text in the advent calendar. Would it tage an image tag: <img src=\"\"> or like that &lt;img src=\"\"&gt;"});
+// var doorcontent = JSON.stringify({"title":"A door!", "text":"This is the text in the advent calendar. Would it tage an image tag: <img src=\"\"> or like that &lt;img src=\"\"&gt;"});
 
 
 var App = React.createClass({

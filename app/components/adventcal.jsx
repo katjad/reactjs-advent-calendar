@@ -7,13 +7,15 @@ var winconfig = require('./../../lib/winconfig');
 
 var contents = [];
 
+// test
+
 var AdventCal = React.createClass({
     getInitialState: function(){
       return ({contents : []})
     },
     componentDidMount: function(){     
-        for(var i = 1; i < 25; i++){
-            if(i == 24 ){
+        for(var i = 1; i < 6; i++){
+            if(i == 6 ){
               this.timer = window.setTimeout(this.focusOnTop, 500);
             }
             this.getContents(i);
